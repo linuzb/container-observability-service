@@ -6,5 +6,5 @@ ARG PLUGINS=""
 
 # Install each plugin.
 RUN for plugin in $PLUGINS; do \
-      grafana-cli plugins install $plugin; \
+      grafana cli plugins install $plugin; \
     done
