@@ -24,7 +24,7 @@ spec:
         - --config-file=/app/config-file.yaml
         - --enable-kube-client={{ .Values.grafanadiInitKubeClient }}
         name: grafanadi
-        image: {{ .Values.lunettesImage }}
+        image: {{ .Values.lunettesdiImage }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         ports:
         - containerPort: 8080

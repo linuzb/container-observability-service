@@ -11,10 +11,9 @@ COPY pkg/    pkg/
 COPY statics/ statics/
 
 # Build
-RUN GO111MODULE=off CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o aggregator github.com/alipay/container-observability-service/cmd/aggregator
+RUN GO111MODULE=off CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o auditinstaller github.com/alipay/container-observability-service/cmd/audit_init
 
 # Copy the aggregator binary into a thin image
 FROM ubuntu:devel
 WORKDIR /
-COPY --from=builder /go/src/github.com/alipay/container-observability-service/aggregator .
-COPY --from=builder /go/src/github.com/alipay/container-observability-service/statics ./statics
+COPY --from=builder /go/src/github.com/alipay/container-observability-service/auditinstaller .

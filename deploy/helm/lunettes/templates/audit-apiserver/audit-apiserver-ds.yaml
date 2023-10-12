@@ -31,7 +31,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: audit-config-installer
-        image: {{ .Values.lunettesImage }}
+        image: {{ .Values.lunettesauditImage }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         command:
         - /auditinstaller

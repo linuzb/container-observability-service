@@ -11,6 +11,7 @@ esUser: elastic
 esPassword: changeme
 
 # audit-apiserver
+lunettesauditImage: lunettes/lunettesaudit:latest
 enableAuditApiserver: false
 auditResources:
   limits:
@@ -38,6 +39,7 @@ lunettesResources:
     memory: 500Mi
 
 # grafanadi
+lunettesdiImage: lunettes/lunettesdi:latest
 grafanadiInitKubeClient: false
 grafanadiType: LoadBalancer
 grafanadiNodePort: 30280
