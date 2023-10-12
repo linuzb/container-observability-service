@@ -3,10 +3,7 @@ FROM golang:1.20.3 as builder
 
 # Copy in the go src
 WORKDIR /
-COPY cmd/    cmd/
-COPY internal/ internal/
-COPY pkg/    pkg/
-COPY statics/ statics/
+COPY . .
 
 # Build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/aggregator /cmd/aggregator
