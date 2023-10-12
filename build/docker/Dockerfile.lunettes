@@ -14,7 +14,7 @@ RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o grafa
 # Copy the aggregator binary into a thin image
 FROM ubuntu:devel
 WORKDIR /
-COPY --from=builder /src/bin/aggregator .
+COPY --from=builder /src/aggregator .
 COPY --from=builder /src/statics ./statics
-COPY --from=builder /src/bin/auditinstaller .
-COPY --from=builder /src/bin/grafanadi .
+COPY --from=builder /src/auditinstaller .
+COPY --from=builder /src/grafanadi .
