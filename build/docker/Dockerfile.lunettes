@@ -5,7 +5,7 @@ FROM golang:1.20.3 as builder
 WORKDIR /
 COPY . .
 
-RUN go env
+RUN go env -w GO111MODULE=on && go env
 # Build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/aggregator ./cmd/aggregator
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/auditinstaller ./cmd/audit_init
