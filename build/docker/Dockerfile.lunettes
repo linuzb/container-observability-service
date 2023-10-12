@@ -15,6 +15,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/grafanadi ./cmd
 FROM ubuntu:devel
 WORKDIR /
 COPY --from=builder /bin/aggregator .
-COPY --from=builder /bin/statics ./statics
+COPY --from=builder /statics ./statics
 COPY --from=builder /bin/auditinstaller .
 COPY --from=builder /bin/grafanadi .
