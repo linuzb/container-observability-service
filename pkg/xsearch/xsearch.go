@@ -66,11 +66,9 @@ const (
 	defaultMapping  = `
 	{
 		"mappings" : {
-      		"_doc" : {
-        		"dynamic" : "false",
-        		"properties" : {
-				}
-      		}
+			"dynamic" : "false",
+			"properties" : {
+			}
     	}
   	}
 	`
@@ -80,76 +78,74 @@ const (
 	nodeYamlMapping   = `
 	{
 		"mappings": {
-		  "_doc": {
 			"dynamic": "false",
 			"properties": {
-			  "auditID": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
+				"auditID": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"clusterName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"namespace": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"nodeIp": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"nodeName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"stageTimestamp": {
+					"type": "date"
+				},
+				"uid": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				}
-			  },
-			  "clusterName": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "namespace": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "nodeIp": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "nodeName": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "stageTimestamp": {
-				"type": "date"
-			  },
-			  "uid": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  }
 			}
-		  }
 		},
 		"settings": {
-		  "index": {
-			"number_of_shards": "1",
-			"number_of_replicas": "1"
-		  }
+			"index": {
+				"number_of_shards": "1",
+				"number_of_replicas": "1"
+			}
 		}
-	  }`
+	}`
 	ztimePipelineName    = "ztimestamp"
 	ztimePipelineMapping = `
 	{
@@ -166,73 +162,70 @@ const (
 	//pod 生命周期中各个事件
 	podLifePhaseIndexName = "pod_life_phase"
 	podLifePhaseTypeName  = "_doc"
-	podLifePhaseMapping   = `
-	{
+	podLifePhaseMapping   = `{
 		"mappings": {
-		  "_doc": {
 			"dynamic": "false",
 			"properties": {
-			  "clusterName": {
-				"type": "keyword"
-			  },
-			  "dataSourceId": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
+				"clusterName": {
+					"type": "keyword"
+				},
+				"dataSourceId": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"endTime": {
+					"type": "date"
+				},
+				"endTimeStr": {
+					"type": "date"
+				},
+				"endTimeUnix": {
+					"type": "long"
+				},
+				"hasErr": {
+					"type": "boolean"
+				},
+				"namespace": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"operationName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"podName": {
+					"type": "keyword"
+				},
+				"podUID": {
+					"type": "keyword"
+				},
+				"startTime": {
+					"type": "date"
+				},
+				"startTimeStr": {
+					"type": "date"
+				},
+				"startTimeUnix": {
+					"type": "long"
 				}
-			  },
-			  "endTime": {
-				"type": "date"
-			  },
-			  "endTimeStr": {
-				"type": "date"
-			  },
-			  "endTimeUnix": {
-				"type": "long"
-			  },
-			  "hasErr": {
-				"type": "boolean"
-			  },
-			  "namespace": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "operationName": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "podName": {
-				"type": "keyword"
-			  },
-			  "podUID": {
-				"type": "keyword"
-			  },
-			  "startTime": {
-				"type": "date"
-			  },
-			  "startTimeStr": {
-				"type": "date"
-			  },
-			  "startTimeUnix": {
-				"type": "long"
-			  }
 			}
-		  }
 		}
-	  }`
+	}`
 
 	// pod yaml
 	podYamlIndexName = "pod_yaml"
@@ -240,110 +233,107 @@ const (
 	podYamlmap       = `
 	{
 		"mappings": {
-			"_doc": {
-				"dynamic" : "false",
-				"properties": {
-					"stageTimestamp": {
-						"type": "date"
-					},
-					"auditID": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					"pod": {
-						"enabled" : false
-					},
-					"clusterName": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					"isDeleted": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					"namespace": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					"podIP": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					"podUID": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
-						}
-					},
-					 "hostIP": {
-						"type": "text",
-						"fields": {
-				  		  "keyword": {
+			"dynamic": "false",
+			"properties": {
+				"stageTimestamp": {
+					"type": "date"
+				},
+				"auditID": {
+					"type": "text",
+					"fields": {
+						"keyword": {
 							"type": "keyword",
 							"ignore_above": 256
-				  		   }
 						}
-			  		},
-			  		 "hostname": {
-						"type": "text",
-						"fields": {
-				  		  "keyword": {
+					}
+				},
+				"pod": {
+					"enabled": false
+				},
+				"clusterName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
 							"type": "keyword",
 							"ignore_above": 256
-				  			}
 						}
-			 		 },
-	  				"images": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
+					}
+				},
+				"isDeleted": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
 						}
-					},
-					"podName": {
-						"type": "text",
-						"fields": {
-							"keyword": {
-								"type": "keyword",
-								"ignore_above": 256
-							}
+					}
+				},
+				"namespace": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"podIP": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"podUID": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"hostIP": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"hostname": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"images": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"podName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
 						}
 					}
 				}
 			}
 		}
-	}
-	`
+	}`
 	//slo data
 	sloDataIndexName = "slo_data"
 	sloDataTypeName  = "data"
