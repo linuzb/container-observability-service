@@ -5,11 +5,11 @@ FROM golang:1.20.3 as builder
 WORKDIR /
 COPY . .
 
-RUN GO111MODULE=on && go mod download
+RUN go env
 # Build
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/aggregator /cmd/aggregator
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/auditinstaller /cmd/audit_init
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/grafanadi /cmd/grafanadi
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/aggregator ./cmd/aggregator
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/auditinstaller ./cmd/audit_init
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o /bin/grafanadi ./cmd/grafanadi
 
 # Copy the aggregator binary into a thin image
 FROM ubuntu:devel
