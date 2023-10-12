@@ -37,6 +37,8 @@ jobs:
       # Use the git command to retrieve the current tag information and store it in the environment variable APP_VERSION.
       - name: Generate App Version
         run: echo APP_VERSION=`git describe --tags --always` >> $GITHUB_ENV
+      - name: Determine GOARCH
+        run: echo "::set-env name=GOARCH::$(go env GOARCH)"
       - name: Build and push lunettes
         id: docker_build_lunettes
         uses: docker/build-push-action@v2
@@ -46,6 +48,9 @@ jobs:
           # Generate multi-platform images, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
           platforms: |
             linux/amd64
+            linux/arm64
+          build-args: |
+            GOARCH=${{ env.GOARCH }}
           # Generate two Docker tags: ${APP_VERSION} 和 latest
           tags: |
             ${{ env.LUNETTES_DOCKERHUB_REPO }}:latest
@@ -59,6 +64,7 @@ jobs:
           # Generate multi-platform images, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
           platforms: |
             linux/amd64
+            linux/arm64
           # docker build arg
           build-args: |
             PLUGINS=${{ env.GRAFANA_PLUGINS }}
