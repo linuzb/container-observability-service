@@ -20,65 +20,61 @@ const (
 	podInfoIndexName = "slo_pod_info"
 	podInfoTypeName  = "_doc"
 
-	sloPodInfoMapping = `
-	{
-		"mappings" : {
-		  "_doc" : {
-			"properties" : {
-			  "podName" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },          
-			  "bizId" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "clusterName" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "namespace" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },          
-			  "deliveryStatus" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "startTime" : {
-				"type" : "date"
-			  },
-			  "bizSource" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },  
-			  "stageTimestamp" : {
-				"type" : "date"
-			  },          
-			  "deliveryProgress" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "currentTime" : {
-				"type" : "date"
-			  },
-			  "auditID" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "podIP" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  },
-			  "podUID" : {
-				"type" : "keyword",
-				"ignore_above" : 256
-			  }
+	sloPodInfoMapping = `{
+		"mappings": {
+			"properties": {
+				"podName": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"bizId": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"clusterName": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"namespace": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"deliveryStatus": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"startTime": {
+					"type": "date"
+				},
+				"bizSource": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"stageTimestamp": {
+					"type": "date"
+				},
+				"deliveryProgress": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"currentTime": {
+					"type": "date"
+				},
+				"auditID": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"podIP": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"podUID": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
 			}
-		  }
-	  }
-	}
-	`
+		}
+	}`
 )
 
 var (

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"sync"
 	"time"
 
@@ -673,42 +674,49 @@ func InitZsearch(zsearchEndPoint, username, password string, extraInfo interface
 	//node yaml
 	err := EnsureIndex(esClient, nodeYamlIndexName, nodeYamlMapping)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", nodeYamlIndexName, nodeYamlMapping)
 		panic(err)
 	}
 
 	err = EnsureIndex(esClient, podLifePhaseIndexName, podLifePhaseMapping)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", podLifePhaseIndexName, podLifePhaseMapping)
 		panic(err)
 	}
 	err = EnsureIndex(esClient, podYamlIndexName, podYamlmap)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", podYamlIndexName, podYamlmap)
 		panic(err)
 	}
 
 	err = EnsureIndex(esClient, sloDataIndexName, "")
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", sloDataIndexName, "")
 		panic(err)
 	}
 	//slo trace data
 	err = EnsureIndex(esClient, sloTraceDataIndexName, sloTraceDataMapping)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", sloTraceDataIndexName, sloTraceDataMapping)
 		panic(err)
 	}
 
 	err = EnsureIndex(esClient, podInfoIndexName, sloPodInfoMapping)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", podInfoIndexName, sloPodInfoMapping)
 		panic(err)
 	}
 
 	//audit_staging
 	err = EnsureIndex(esClient, auditStagingName, auditStagingMapping)
 	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", auditStagingName, auditStagingMapping)
 		panic(err)
 	}
 	// err = EnsurePipeline(esClient, ztimePipelineName, ztimePipelineMapping)
-	if err != nil {
-		panic(err)
-	}
+	// if err != nil {
+	// 	panic(err)
+	// }
 }
 
 // SavePodLifePhase save pod life phase to zsearch
