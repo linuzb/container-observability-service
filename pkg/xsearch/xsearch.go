@@ -146,18 +146,18 @@ const (
 			}
 		}
 	}`
-	ztimePipelineName    = "ztimestamp"
-	ztimePipelineMapping = `
-	{
-		"processors" : [
-		  {
-			"set" : {
-			  "field" : "ztimestamp",
-			  "value" : "{{_ingest.timestamp}}"
-			}
-		  }
-		]
-	}`
+	// ztimePipelineName    = "ztimestamp"
+	// ztimePipelineMapping = `
+	// {
+	// 	"processors" : [
+	// 	  {
+	// 		"set" : {
+	// 		  "field" : "ztimestamp",
+	// 		  "value" : "{{_ingest.timestamp}}"
+	// 		}
+	// 	  }
+	// 	]
+	// }`
 
 	//pod 生命周期中各个事件
 	podLifePhaseIndexName = "pod_life_phase"
@@ -345,315 +345,309 @@ const (
 	sloTraceDataMapping   = `
 	{
 		"mappings": {
-		  "data": {
 			"dynamic": "false",
 			"properties": {
-			  "Appname": {
-				"type": "text"
-			  },
-			  "BizId": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "BizName": {
-				"type": "keyword"
-			  },
-			  "Cluster": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "Cores": {
-				"type": "integer"
-			  },
-			  "CreatedTime": {
-				"type": "date"
-			  },
-			  "DeleteResult": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "DeliveryDuration": {
-				"type": "long"
-			  },
-			  "DeliverySLO": {
-				"type": "keyword"
-			  },
-			  "DeliveryStatus": {
-				"type": "keyword"
-			  },
-			  "DeliveryWorkload": {
-				"type": "keyword"
-			  },
-			  "LifeDuration": {
-				"type": "long",
-				"fields": {
-				  "keyword": {
-					"type": "keyword"
-				  }
-				}
-			  },
-			  "Namespace": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "NodeIP": {
-				"type": "keyword",
-				"fields": {
-				  "keyword": {
-					"type": "keyword"
-				  }
-				}
-			  },
-			  "NodeName": {
-				"type": "keyword"
-			  },
-			  "PodName": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "PodUID": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "ResourceHint": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "SLOViolationReason": {
-				"type": "keyword",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "SloHint": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "StartUpResultFromCreate": {
-				"type": "keyword",
-				"fields": {
-				  "field": {
+				"Appname": {
 					"type": "text"
-				  },
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "Type": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword",
-					"ignore_above": 256
-				  }
-				}
-			  },
-			  "UpgradeResult": {
-				"type": "text",
-				"fields": {
-				  "keyword": {
-					"type": "keyword"
-				  }
-				}
-			  }
-			}
-		  }
-		}
-	  }
-	`
-
-	auditStagingName    = "audit_staging"
-	auditStagingMapping = `
-	{
-		"mappings": {
-		  "doc": {
-			"dynamic": "false",
-			"properties": {
-			  "@timestamp": {
-				"type": "date"
-			  },
-			  "annotations": {
-				"properties": {
-				  "cluster": {
+				},
+				"BizId": {
 					"type": "text",
 					"fields": {
-					  "keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					  }
-					}
-				  }
-				}
-			  },
-			  "auditID": {
-				"type": "keyword"
-			  },
-			  "host": {
-				"properties": {
-				  "name": {
-					"type": "keyword"
-				  }
-				}
-			  },
-			  "kind": {
-				"type": "keyword"
-			  },
-			  "objectRef": {
-				"properties": {
-				  "apiGroup": {
-					"type": "keyword"
-				  },
-				  "apiVersion": {
-					"type": "keyword"
-				  },
-				  "name": {
-					"type": "text",
-					"fields": {
-					  "keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					  }
-					}
-				  },
-				  "namespace": {
-					"type": "keyword"
-				  },
-				  "resource": {
-					"type": "keyword"
-				  },
-				  "resourceVersion": {
-					"type": "keyword"
-				  },
-				  "subresource": {
-					"type": "keyword"
-				  },
-				  "uid": {
-					"type": "keyword"
-				  }
-				}
-			  },
-			  "requestReceivedTimestamp": {
-				"type": "date"
-			  },
-			  "responseObject": {
-				"properties": {
-				  "involvedObject": {
-					"properties": {
-					  "name": {
-						"type": "text",
-						"fields": {
-						  "keyword": {
+						"keyword": {
 							"type": "keyword",
 							"ignore_above": 256
-						  }
 						}
-					  },
-					  "namespace": {
-						"type": "keyword"
-					  },
-					  "uid": {
-						"type": "keyword"
-					  }
 					}
-				  },
-				  "metadata" : {
-					"properties" : {
-					  "managedFields" : {
-						"properties" : {
-						  "fieldsV1" : {
-							"properties" : {
-							  "f:metadata" : {
-								"type" : "object",
-								"enabled": false
-							  }
-							}
-						  }
-						}
-					  }
-					}
-				  },
-				  "reason": {
+				},
+				"BizName": {
 					"type": "keyword"
-				  }
-				}
-			  },
-			  "responseStatus": {
-				"properties": {
-				  "code": {
-					"type": "long"
-				  },
-				  "reason": {
+				},
+				"Cluster": {
 					"type": "text",
 					"fields": {
-					  "keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					  }
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
 					}
-				  },
-				  "status": {
+				},
+				"Cores": {
+					"type": "integer"
+				},
+				"CreatedTime": {
+					"type": "date"
+				},
+				"DeleteResult": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"DeliveryDuration": {
+					"type": "long"
+				},
+				"DeliverySLO": {
 					"type": "keyword"
-				  }
+				},
+				"DeliveryStatus": {
+					"type": "keyword"
+				},
+				"DeliveryWorkload": {
+					"type": "keyword"
+				},
+				"LifeDuration": {
+					"type": "long",
+					"fields": {
+						"keyword": {
+							"type": "keyword"
+						}
+					}
+				},
+				"Namespace": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"NodeIP": {
+					"type": "keyword",
+					"fields": {
+						"keyword": {
+							"type": "keyword"
+						}
+					}
+				},
+				"NodeName": {
+					"type": "keyword"
+				},
+				"PodName": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"PodUID": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"ResourceHint": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"SLOViolationReason": {
+					"type": "keyword",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"SloHint": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"StartUpResultFromCreate": {
+					"type": "keyword",
+					"fields": {
+						"field": {
+							"type": "text"
+						},
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"Type": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"UpgradeResult": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword"
+						}
+					}
 				}
-			  },
-			  "stageTimestamp": {
-				"type": "date"
-			  },
-			  "timestamp": {
-				"type": "date"
-			  },
-			  "verb": {
-				"type": "keyword"
-			  }
 			}
-		  }
 		}
-	  }`
+	}`
+
+	auditStagingName    = "audit_staging"
+	auditStagingMapping = `{
+		"mappings": {
+			"dynamic": "false",
+			"properties": {
+				"@timestamp": {
+					"type": "date"
+				},
+				"annotations": {
+					"properties": {
+						"cluster": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				},
+				"auditID": {
+					"type": "keyword"
+				},
+				"host": {
+					"properties": {
+						"name": {
+							"type": "keyword"
+						}
+					}
+				},
+				"kind": {
+					"type": "keyword"
+				},
+				"objectRef": {
+					"properties": {
+						"apiGroup": {
+							"type": "keyword"
+						},
+						"apiVersion": {
+							"type": "keyword"
+						},
+						"name": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"namespace": {
+							"type": "keyword"
+						},
+						"resource": {
+							"type": "keyword"
+						},
+						"resourceVersion": {
+							"type": "keyword"
+						},
+						"subresource": {
+							"type": "keyword"
+						},
+						"uid": {
+							"type": "keyword"
+						}
+					}
+				},
+				"requestReceivedTimestamp": {
+					"type": "date"
+				},
+				"responseObject": {
+					"properties": {
+						"involvedObject": {
+							"properties": {
+								"name": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"namespace": {
+									"type": "keyword"
+								},
+								"uid": {
+									"type": "keyword"
+								}
+							}
+						},
+						"metadata": {
+							"properties": {
+								"managedFields": {
+									"properties": {
+										"fieldsV1": {
+											"properties": {
+												"f:metadata": {
+													"type": "object",
+													"enabled": false
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"reason": {
+							"type": "keyword"
+						}
+					}
+				},
+				"responseStatus": {
+					"properties": {
+						"code": {
+							"type": "long"
+						},
+						"reason": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"status": {
+							"type": "keyword"
+						}
+					}
+				},
+				"stageTimestamp": {
+					"type": "date"
+				},
+				"timestamp": {
+					"type": "date"
+				},
+				"verb": {
+					"type": "keyword"
+				}
+			}
+		}
+	}`
 )
 
 var esClient *elastic.Client
@@ -711,7 +705,7 @@ func InitZsearch(zsearchEndPoint, username, password string, extraInfo interface
 	if err != nil {
 		panic(err)
 	}
-	err = EnsurePipeline(esClient, ztimePipelineName, ztimePipelineMapping)
+	// err = EnsurePipeline(esClient, ztimePipelineName, ztimePipelineMapping)
 	if err != nil {
 		panic(err)
 	}
