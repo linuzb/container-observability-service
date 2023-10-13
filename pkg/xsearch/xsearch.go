@@ -147,18 +147,18 @@ const (
 			}
 		}
 	}`
-	// ztimePipelineName    = "ztimestamp"
-	// ztimePipelineMapping = `
-	// {
-	// 	"processors" : [
-	// 	  {
-	// 		"set" : {
-	// 		  "field" : "ztimestamp",
-	// 		  "value" : "{{_ingest.timestamp}}"
-	// 		}
-	// 	  }
-	// 	]
-	// }`
+	ztimePipelineName    = "ztimestamp"
+	ztimePipelineMapping = `
+	{
+		"processors" : [
+		  {
+			"set" : {
+			  "field" : "ztimestamp",
+			  "value" : "{{_ingest.timestamp}}"
+			}
+		  }
+		]
+	}`
 
 	//pod 生命周期中各个事件
 	podLifePhaseIndexName = "pod_life_phase"
@@ -713,10 +713,11 @@ func InitZsearch(zsearchEndPoint, username, password string, extraInfo interface
 		log.Printf("index: %s, mammping: %s\n", auditStagingName, auditStagingMapping)
 		panic(err)
 	}
-	// err = EnsurePipeline(esClient, ztimePipelineName, ztimePipelineMapping)
-	// if err != nil {
-	// 	panic(err)
-	// }
+	err = EnsurePipeline(esClient, ztimePipelineName, ztimePipelineMapping)
+	if err != nil {
+		log.Printf("index: %s, mammping: %s\n", ztimePipelineName, ztimePipelineMapping)
+		panic(err)
+	}
 }
 
 // SavePodLifePhase save pod life phase to zsearch
