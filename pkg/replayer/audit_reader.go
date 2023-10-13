@@ -43,15 +43,13 @@ const (
 	metaTypeName     = "meta"
 	metaMapping      = `
 	{
-	  "mappings": {
-		"meta": {
-		  "properties": {
-		    "LastReadTime": {
-		      "type": "long"
-		    }
-		  }
+		"mappings": {
+			"properties": {
+				"LastReadTime": {
+					"type": "long"
+				}
+			}
 		}
-	  }
 	}`
 )
 
