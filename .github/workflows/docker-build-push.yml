@@ -4,7 +4,7 @@ name: Build and Push Docker Image
 on:
   push:
     tags: "*"
-    branches: ["main","fix/*"]
+    branches: ["main","fix/*", "feat/*"]
 
 env:
   LUNETTES_DOCKERHUB_REPO: lunettes/lunettes
