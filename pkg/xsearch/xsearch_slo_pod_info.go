@@ -11,7 +11,7 @@ import (
 
 	"github.com/alipay/container-observability-service/pkg/metrics"
 	"github.com/alipay/container-observability-service/pkg/utils"
-	"github.com/olivere/elastic"
+	"github.com/olivere/elastic/v7"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/klog/v2"
 )
@@ -366,7 +366,7 @@ func InitSloPodInfo(cluster string, podInfoCacheUid utils.LRU) error {
 		if results != nil {
 			for _, hit := range results.Hits.Hits {
 				podInfo := &SloPodInfo{}
-				if er := json.Unmarshal(*hit.Source, podInfo); er == nil {
+				if er := json.Unmarshal(hit.Source, podInfo); er == nil {
 					//add pod info list
 					rs := []*SloPodInfo{podInfo}
 					podInfoCacheUid.Put(podInfo.PodUid, rs)

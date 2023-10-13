@@ -2,14 +2,15 @@ package shares
 
 import (
 	"encoding/json"
+	"sort"
+	"sync"
+
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
 	k8s_audit "k8s.io/apiserver/pkg/apis/audit"
 	"k8s.io/klog/v2"
-	"sort"
-	"sync"
 )
 
 type AuditType string
@@ -160,13 +161,13 @@ func NewHitEvent() *HitEvent {
 	}
 }
 
-func (h *HitEvent) UnmarshalToEvent(hit *json.RawMessage) {
+func (h *HitEvent) UnmarshalToEvent(hit json.RawMessage) {
 	h.Add(1)
 	go func() {
 		//var json = jsoniter.ConfigCompatibleWithStandardLibrary
-		err := json.Unmarshal(*hit, &h.Event)
+		err := json.Unmarshal(hit, &h.Event)
 		if err != nil {
-			klog.Errorf("failed unmarshal %s, data %s", err.Error(), string(*hit))
+			klog.Errorf("failed unmarshal %s, data %s", err.Error(), string(hit))
 			h.HasError = true
 		}
 		h.Done()

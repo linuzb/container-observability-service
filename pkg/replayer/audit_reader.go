@@ -26,7 +26,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/utils"
 	"github.com/alipay/container-observability-service/pkg/xsearch"
 
-	"github.com/olivere/elastic"
+	"github.com/olivere/elastic/v7"
 	"github.com/prometheus/client_golang/prometheus"
 	"golang.org/x/sync/errgroup"
 	"k8s.io/apimachinery/pkg/util/wait"
@@ -274,9 +274,9 @@ func (lr *logReader) getLastReadTime() time.Time {
 
 	if result.Found {
 		conf := &metaConf{}
-		err := json.Unmarshal(*result.Source, conf)
+		err := json.Unmarshal(result.Source, conf)
 		if err != nil {
-			klog.Errorf("failed unmarshal %s: %s", string(*result.Source), err.Error())
+			klog.Errorf("failed unmarshal %s: %s", string(result.Source), err.Error())
 			return now
 		}
 

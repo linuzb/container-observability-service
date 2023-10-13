@@ -11,7 +11,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/metrics"
 	"github.com/alipay/container-observability-service/pkg/utils"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/olivere/elastic"
+	"github.com/olivere/elastic/v7"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/klog/v2"
 )
