@@ -338,12 +338,12 @@ const (
 	}`
 	//slo data
 	sloDataIndexName = "slo_data"
-	sloDataTypeName  = "data"
+	sloDataTypeName  = "_doc"
 
 	//slo trace data
 	// change from slo_trace_data to slo_trace_data_daily
 	sloTraceDataIndexName = "slo_trace_data_daily"
-	sloTraceDataTypeName  = "data"
+	sloTraceDataTypeName  = "_doc"
 	sloTraceDataMapping   = `
 	{
 		"mappings": {
