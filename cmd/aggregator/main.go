@@ -47,7 +47,7 @@ func newRootCmd() *cobra.Command {
 		Short: "This is aggregator command",
 		Long:  `This is aggregator comand for lenettes`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			flag.Parse()
+			// flag.Parse()
 			go func() {
 				// Expose the registered metrics via HTTP.
 				http.Handle("/metrics", promhttp.Handler())
