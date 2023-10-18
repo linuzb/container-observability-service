@@ -21,6 +21,8 @@ jobs:
         with:
           go-version-file: go.mod
           cache: false
+        env:
+          GO111MODULE: off
 
       - name: Golangci lint
         uses: golangci/golangci-lint-action@v3
