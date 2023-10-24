@@ -15,5 +15,21 @@ jobs:
       with:
         config: hack/kind.yaml
         cluster_name: k8s
-    - name: Test kubectl get kind
-      run: kubectl get ns
+    - name: Test kind
+      run: |
+        kubectl get ns
+    - name: Create test pod
+      run: |
+        kubectl run nginx --image=nginx
+        sleep 30
+        kubectl get pods
+        sleep 1m
+    - name: Test podinfo api with curl
+      run: |
+        response=$(curl -X GET "http://localhost:9099/podinfotable?searchkey=name&searchvalue=nginx")
+        if echo "$response" | grep -q "nginx"; then
+          echo "URL test passed"
+        else
+          echo "URL test failed"
+          exit 1
+        fi
