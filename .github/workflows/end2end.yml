@@ -18,12 +18,23 @@ jobs:
     - name: Test kind
       run: |
         kubectl get ns
+    - uses: azure/setup-helm@v3
+      id: install
+    - name: Deploy lunettes
+      run: |
+        helm upgrade --install lunettes deploy/helm/lunettes/ \
+          --set enableAuditApiserver=true \
+          --set lunettesType=NodePort \
+          --set grafanadiType=NodePort \
+          --set grafanaType=NodePort \
+          --set jaegerType=NodePort
+        sleep 12m
     - name: Create test pod
       run: |
         kubectl run nginx --image=nginx
         sleep 30
         kubectl get pods
-        sleep 1m
+        sleep 5m
     - name: Test podinfo api with curl
       run: |
         response=$(curl -X GET "http://localhost:9099/podinfotable?searchkey=name&searchvalue=nginx")
