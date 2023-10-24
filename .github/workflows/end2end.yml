@@ -1,0 +1,16 @@
+name: End to End Test
+
+on:
+  push:
+
+jobs:
+  create-cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.5.0
+      with:
+        config: hack/kind.yaml
+        cluster_name: k8s
+      - name: Test kubectl get kind
+        run: kubectl get ns
