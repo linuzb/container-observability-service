@@ -28,7 +28,12 @@ jobs:
           --set grafanadiType=NodePort \
           --set grafanaType=NodePort \
           --set jaegerType=NodePort
-        sleep 12m
+        # waiting for lunettes ready
+        for ((i=0; i<12; i++))
+        do
+          kubectl -n lunettes get pods -owide
+          sleep 1m
+        done
     - name: Create test pod
       run: |
         kubectl run nginx --image=nginx
