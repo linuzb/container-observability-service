@@ -37,8 +37,12 @@ jobs:
         do
           output=$(kubectl -n lunettes get pods -owide)
           echo "$output"
-          pod_name=$(echo "$output" | awk '$1 ~ /^lunettes-/{print $1}')
-          kubectl -n lunettes logs $pod_name | head -n 30
+          lunettes_pod_name=$(echo "$output" | awk '$1 ~ /^lunettes-/{print $1}')
+          echo "log lunettes ......"
+          kubectl -n lunettes logs $lunettes_pod_name | head -n 30
+          es_pod_name=$(echo "$output" | awk '$1 ~ /^es-single-/{print $1}')
+          echo "log es-single ......"
+          kubectl -n lunettes logs $es_pod_name | head -n 30
           sleep 1m
         done
         set -e
