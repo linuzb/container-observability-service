@@ -25,6 +25,8 @@ jobs:
         helm upgrade --install lunettes deploy/helm/lunettes/ \
           --set lunettesResources.requests.cpu=100m \
           --set lunettesResources.requests.memory=200Mi \
+          --set elasticsearchResources.requests.cpu=100m \
+          --set elasticsearchResources.requests.memory=200Mi \
           --set enableAuditApiserver=true \
           --set lunettesType=NodePort \
           --set grafanadiType=NodePort \
