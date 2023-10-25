@@ -32,7 +32,7 @@ jobs:
           --set jaegerType=NodePort
         # waiting for lunettes ready
         # TODO: check es ready
-        for ((i=0; i<20; i++))
+        for ((i=0; i<30; i++))
         do
           kubectl -n lunettes get pods -owide
           sleep 1m
