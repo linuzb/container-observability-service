@@ -37,6 +37,13 @@ jobs:
         set +e
         for ((i=0; i<50; i++))
         do
+          status=$(curl -s -XGET http://localhost:9200/_cluster/health | awk -F'"' '/"status"/{print $4}')
+          if [ -n "$status" ] && [ "$status" != "red" ]; then
+              echo "Elasticsearch服务已准备就绪，状态为: $status"
+              break
+          else
+              echo "Elasticsearch服务未准备就绪，当前状态为: $status"
+          fi
           output=$(kubectl -n lunettes get pods -owide)
           echo "$output"
           lunettes_pod_name=$(echo "$output" | awk '$1 ~ /^lunettes-/{print $1}')
