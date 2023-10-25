@@ -34,7 +34,10 @@ jobs:
         # TODO: check es ready
         for ((i=0; i<50; i++))
         do
-          kubectl -n lunettes get pods -owide
+          output=$(kubectl -n lunettes get pods -owide)
+          echo "$output"
+          pod_name=$(echo "$output" | awk '$1 ~ /^lunettes-/{print $1}')
+          kubectl -n lunettes logs $pod_name
           sleep 1m
         done
     - name: Create test pod
