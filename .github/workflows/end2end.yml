@@ -32,6 +32,7 @@ jobs:
           --set jaegerType=NodePort
         # waiting for lunettes ready
         # TODO: check es ready
+        set +e
         for ((i=0; i<50; i++))
         do
           output=$(kubectl -n lunettes get pods -owide)
@@ -40,6 +41,7 @@ jobs:
           kubectl -n lunettes logs $pod_name
           sleep 1m
         done
+        set -e
     - name: Create test pod
       run: |
         kubectl run nginx --image=nginx
