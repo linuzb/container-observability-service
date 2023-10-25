@@ -41,10 +41,10 @@ jobs:
           echo "$output"
           lunettes_pod_name=$(echo "$output" | awk '$1 ~ /^lunettes-/{print $1}')
           echo -e "################# log lunettes ......#################\n"
-          kubectl -n lunettes logs $lunettes_pod_name | head -n 100
+          kubectl -n lunettes logs $lunettes_pod_name
           es_pod_name=$(echo "$output" | awk '$1 ~ /^es-single-/{print $1}')
           echo -e "################# log es-single ...... #################\n"
-          kubectl -n lunettes logs $es_pod_name | head -n 100
+          kubectl -n lunettes logs $es_pod_name
           sleep 1m
         done
         set -e
