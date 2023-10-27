@@ -15,10 +15,10 @@ enableAuditApiserver: false
 auditResources:
   limits:
     cpu: 100m
-    memory: 200Mi
+    memory: 100Mi
   requests:
-    cpu: 100m
-    memory: 200Mi
+    cpu: 10m
+    memory: 10Mi
 auditLogMaxAge: 1
 auditLogMaxBackup: 2
 auditLogMaxSize: 200
@@ -32,9 +32,9 @@ traceEnable: false
 lunettesResources:
   limits:
     cpu: 4
-    memory: 10Gi
+    memory: 4Gi
   requests:
-    cpu: 1
+    cpu: 500Mi
     memory: 500Mi
 
 # grafanadi
@@ -43,11 +43,11 @@ grafanadiType: LoadBalancer
 grafanadiNodePort: 30280
 grafanadiResources:
   limits:
-    cpu: 250m
+    cpu: 500m
     memory: 500Mi
   requests:
-    cpu: 250m
-    memory: 500Mi
+    cpu: 100m
+    memory: 100Mi
 
 # grafana
 grafanaImage: lunettes/grafana:latest
@@ -55,32 +55,32 @@ grafanaType: LoadBalancer
 grafanaNodePort: 30180
 grafanaResources:
   limits:
-    cpu: 250m
+    cpu: 500m
     memory: 500Mi
   requests:
-    cpu: 250m
-    memory: 500Mi
+    cpu: 100m
+    memory: 100Mi
 
 # kibana
 kibanaImage: docker.elastic.co/kibana/kibana:6.6.0
 kibanaNodePort: 30610
 kibanaResources:
   limits:
-    cpu: 250m
+    cpu: 500m
     memory: 500Mi
   requests:
-    cpu: 250m
-    memory: 500Mi
+    cpu: 100m
+    memory: 100Mi
 
 # filebeat
 filebeatImage: elastic/filebeat:6.6.2
 filebeatResources:
   limits:
-    cpu: 100m
-    memory: 200Mi
+    cpu: 500m
+    memory: 500Mi
   requests:
     cpu: 100m
-    memory: 200Mi
+    memory: 100Mi
 
 # elasticsearch
 elasticImage: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
@@ -101,11 +101,11 @@ promImage: prom/prometheus
 prometheusNodePort: 30190
 prometheusResources:
   limits:
-    cpu: 100m
-    memory: 512Mi
+    cpu: 500m
+    memory: 500Mi
   requests:
     cpu: 100m
-    memory: 512Mi
+    memory: 100Mi
 
 # jaejer
 jaegerImage: quay.io/jaegertracing/all-in-one:1.45
@@ -117,4 +117,4 @@ jaegerResources:
     memory: 512Mi
   requests:
     cpu: 100m
-    memory: 512Mi
+    memory: 100Mi
