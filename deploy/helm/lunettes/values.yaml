@@ -34,7 +34,7 @@ lunettesResources:
     cpu: 4
     memory: 4Gi
   requests:
-    cpu: 500Mi
+    cpu: 500M
     memory: 500Mi
 
 # grafanadi
