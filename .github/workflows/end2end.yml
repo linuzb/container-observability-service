@@ -31,7 +31,7 @@ jobs:
         # waiting for lunettes ready
         # TODO: check es ready
         set +e
-        for ((i=0; i<10; i++))
+        for ((i=0; i<30; i++))
         do
           status=$(curl -s -XGET http://localhost:9200/_cluster/health | awk -F'"' '/"status"/{print $4}')
           if [ -n "$status" ] && [ "$status" != "red" ]; then
@@ -48,7 +48,7 @@ jobs:
           es_pod_name=$(echo "$output" | awk '$1 ~ /^es-single-/{print $1}')
           echo -e "################# log es-single ...... #################\n"
           kubectl -n lunettes logs $es_pod_name
-          sleep 30m
+          sleep 10m
         done
         set -e
     - name: Create test pod
