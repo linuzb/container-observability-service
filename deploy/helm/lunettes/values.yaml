@@ -90,8 +90,8 @@ elastic2NodePort: 30930
 esJavaOptions: "-Xms1g -Xmx1g"
 elasticsearchResources:
   limits:
-    cpu: 1
-    memory: 2G
+    cpu: 2
+    memory: 4G
   requests:
     cpu: 1
     memory: 2G
