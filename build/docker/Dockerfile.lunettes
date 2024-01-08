@@ -12,7 +12,7 @@ RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o a
 RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o grafanadi ./cmd/grafanadi
 
 # Copy the aggregator binary into a thin image
-FROM ubuntu:22.04
+FROM debian:bookworm
 
 LABEL software.ubuntu="curl,vim,ping,telnet,nc,dnsutils,traceroute,net-tools,golang1.20"
 
