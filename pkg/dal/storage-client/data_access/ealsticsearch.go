@@ -15,7 +15,7 @@ import (
 	"github.com/olivere/elastic/v7"
 
 	// utils "github.com/alipay/container-observability-service/pkg/utils"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 // 2. 定义一个 StorageSqlImpl struct, 该struct 包含了存储client

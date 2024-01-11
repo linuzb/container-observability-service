@@ -6,7 +6,7 @@ import (
 
 	"github.com/alipay/container-observability-service/pkg/queue"
 	"github.com/alipay/container-observability-service/pkg/shares"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 var (

@@ -15,7 +15,7 @@ import (
 	"gorm.io/gorm/schema"
 	v1 "k8s.io/api/core/v1"
 	k8saudit "k8s.io/apiserver/pkg/apis/audit"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 // 2. 定义一个 StorageSqlImpl struct, 该struct 包含了存储client

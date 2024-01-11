@@ -5,7 +5,7 @@ import (
 
 	clientset "k8s.io/client-go/kubernetes"
 	restclient "k8s.io/client-go/rest"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 func GetClientFromIncluster(qps float32, burst int) (clientset.Interface, error) {

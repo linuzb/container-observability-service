@@ -14,7 +14,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/utils"
 	"github.com/gocarina/gocsv"
 	"github.com/gorilla/mux"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 type ServerConfig struct {

@@ -10,7 +10,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/spans"
 	"github.com/alipay/container-observability-service/pkg/utils"
 	v1 "k8s.io/api/core/v1"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 type DeliveryType string

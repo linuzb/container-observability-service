@@ -10,7 +10,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/shares"
 	utils2 "github.com/alipay/container-observability-service/pkg/utils"
 	v1 "k8s.io/api/core/v1"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 func init() {

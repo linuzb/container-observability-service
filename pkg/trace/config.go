@@ -13,7 +13,7 @@ import (
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apiserver/pkg/apis/audit"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 	luajson "layeh.com/gopher-json"
 )
 

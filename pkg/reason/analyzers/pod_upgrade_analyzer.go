@@ -8,7 +8,7 @@ import (
 	"github.com/alipay/container-observability-service/pkg/reason/utils"
 	"github.com/alipay/container-observability-service/pkg/shares"
 	spanpkg "github.com/alipay/container-observability-service/pkg/spans"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 func init() {
