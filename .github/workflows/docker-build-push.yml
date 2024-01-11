@@ -3,11 +3,11 @@ name: Build and Push Docker Image
 
 on:
   push:
-    tags: "*"
 
 env:
-  LUNETTES_DOCKERHUB_REPO: lunettes/lunettes
-  GRAFANA_DOCKERHUB_REPO: lunettes/grafana
+  IMAGE_REPO: levizebulon
+  LUNETTES_IMAGE_REPO: ${IMAGE_REPO}/lunettes
+  GRAFANA_IMAGE_REPO: ${IMAGE_REPO}/grafana
   # Plugins to be installed.
   GRAFANA_PLUGINS: yesoreyeram-infinity-datasource marcusolsson-json-datasource volkovlabs-form-panel marcusolsson-dynamictext-panel
 jobs:
