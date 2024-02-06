@@ -6,11 +6,13 @@ on:
     tags: "*"
 
 env:
-  LUNETTES_DOCKERHUB_REPO: levizebulon/lunettes
-  GRAFANA_DOCKERHUB_REPO: levizebulon/grafana
+  REGISTRY: registry-1.docker.io
+  REGISTRY_NAMESPACE: levizebulon
+  LUNETTES_DOCKERHUB_REPO: ${{ env.REGISTRY_NAMESPACE }}/lunettes
+  GRAFANA_DOCKERHUB_REPO: ${{ env.REGISTRY_NAMESPACE }}/grafana
   # Plugins to be installed.
   GRAFANA_PLUGINS: yesoreyeram-infinity-datasource marcusolsson-json-datasource volkovlabs-form-panel marcusolsson-dynamictext-panel
-  REGISTRY: registry-1.docker.io
+
 
 jobs:
   main:
@@ -97,4 +99,4 @@ jobs:
       - name: helm push chart
         # OCI artifacts on Docker Hub 
         # see: https://docs.docker.com/docker-hub/oci-artifacts/
-        run: helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://${{ env.REGISTRY }}/levizebulon
+        run: helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://${{ env.REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}
