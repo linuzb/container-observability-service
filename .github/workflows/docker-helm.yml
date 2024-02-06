@@ -3,13 +3,14 @@ name: Build and Push Docker Image and Helm package
 
 on:
   push:
+    tags: "*"
 
 env:
   LUNETTES_DOCKERHUB_REPO: levizebulon/lunettes
   GRAFANA_DOCKERHUB_REPO: levizebulon/grafana
   # Plugins to be installed.
   GRAFANA_PLUGINS: yesoreyeram-infinity-datasource marcusolsson-json-datasource volkovlabs-form-panel marcusolsson-dynamictext-panel
-  REGISTRY: ghcr.io
+  REGISTRY: registry-1.docker.io
 
 jobs:
   main:
@@ -94,4 +95,6 @@ jobs:
           helm package deploy/helm/lunettes --app-version=${{ env.APP_VERSION }} --version=${{ env.APP_VERSION }} -d _out
 
       - name: helm push chart
-        run: helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://registry-1.docker.io/${{ env.REPOSITORY_NAME }}
+        # OCI artifacts on Docker Hub 
+        # see: https://docs.docker.com/docker-hub/oci-artifacts/
+        run: helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://${{ env.REGISTRY }}/levizebulon
