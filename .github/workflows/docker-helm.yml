@@ -40,23 +40,23 @@ jobs:
       # Use the git command to retrieve the current tag information and store it in the environment variable APP_VERSION.
       - name: Generate App Version
         run: echo APP_VERSION=`git describe --tags --always` >> $GITHUB_ENV
-      - name: Build and push lunettes
-        id: docker_build_lunettes
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          file: build/docker/Dockerfile.lunettes
-          # Generate multi-platform images, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
-          platforms: |
-            linux/amd64
-            linux/arm64
-          # docker build arg
-          build-args: |
-            GOARCH=$(go env GOARCH)
-          # Generate two Docker tags: ${APP_VERSION} 和 latest
-          tags: |
-            ${{ env.DOCKERHUB_LUNETTES_REPO }}:latest
-            ${{ env.DOCKERHUB_LUNETTES_REPO }}:${{ env.APP_VERSION }}
+      # - name: Build and push lunettes
+      #   id: docker_build_lunettes
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     push: true
+      #     file: build/docker/Dockerfile.lunettes
+      #     # Generate multi-platform images, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
+      #     platforms: |
+      #       linux/amd64
+      #       linux/arm64
+      #     # docker build arg
+      #     build-args: |
+      #       GOARCH=$(go env GOARCH)
+      #     # Generate two Docker tags: ${APP_VERSION} 和 latest
+      #     tags: |
+      #       ${{ env.DOCKERHUB_LUNETTES_REPO }}:latest
+      #       ${{ env.DOCKERHUB_LUNETTES_REPO }}:${{ env.APP_VERSION }}
       - name: Build and push grafana
         id: docker_build_grafana
         uses: docker/build-push-action@v2
