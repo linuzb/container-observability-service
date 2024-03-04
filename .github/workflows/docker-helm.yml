@@ -61,6 +61,7 @@ jobs:
         id: docker_build_grafana
         uses: docker/build-push-action@v2
         with:
+          context: .
           push: true
           file: build/docker/Dockerfile.grafana
           # Generate multi-platform images, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
