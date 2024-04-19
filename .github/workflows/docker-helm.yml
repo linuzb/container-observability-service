@@ -64,10 +64,8 @@ jobs:
             GOARCH=$(go env GOARCH)
           # Generate two Docker tags: ${APP_VERSION} 和 latest
           tags: |
-            # push to dockerhub
             ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:latest
             ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:${{ env.APP_VERSION }}
-            # push to acr
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:latest
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:${{ env.APP_VERSION }}
       - name: Build and push grafana
@@ -87,7 +85,6 @@ jobs:
           tags: |
             ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:latest
             ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:${{ env.APP_VERSION }}
-            # push to acr
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:latest
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:${{ env.APP_VERSION }}
 
