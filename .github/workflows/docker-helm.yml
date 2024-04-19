@@ -83,8 +83,8 @@ jobs:
             PLUGINS=${{ env.GRAFANA_PLUGINS }}
           # Generate two Docker tags: ${APP_VERSION} 和 latest
           tags: |
-            ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:latest
-            ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:${{ env.APP_VERSION }}
+            ${{ env.DOCKERHUB_REGISTRY }}/levizebulon/${{ env.GRAFANA_IMAGE_NAME }}:latest
+            ${{ env.DOCKERHUB_REGISTRY }}/levizebulon/${{ env.GRAFANA_IMAGE_NAME }}:${{ env.APP_VERSION }}
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:latest
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.GRAFANA_IMAGE_NAME }}:${{ env.APP_VERSION }}
 
