@@ -19,5 +19,6 @@ ARG PLUGINS=""
 # Install each plugin.
 ARG IFS=','
 RUN for plugin in $PLUGINS; do \
-      grafana-cli plugins install $plugin; \
+      echo "plugin name is $plugin"; \
+      grafana cli plugins install $plugin; \
     done
