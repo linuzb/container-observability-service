@@ -23,5 +23,5 @@ RUN set -e; \
     for plugin in $PLUGINS; do \
       echo "plugin name is $plugin"; \
       grafana cli plugins install $plugin; \
-    done \
+    done; \
     IFS=${ORIG_IFS};
