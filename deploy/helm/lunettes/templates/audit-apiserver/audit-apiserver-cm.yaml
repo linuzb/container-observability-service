@@ -47,5 +47,5 @@ data:
 kind: ConfigMap
 metadata:
   name: apiserver-audit-config
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 {{- end }}
