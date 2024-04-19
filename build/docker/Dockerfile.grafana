@@ -17,8 +17,11 @@ COPY --from=node /app/yaml_panel/dist /var/lib/grafana/plugins/antgroup-yaml-pan
 ARG PLUGINS="" 
 
 # Install each plugin.
-ARG IFS=','
-RUN for plugin in $PLUGINS; do \
+RUN set -e; \
+    ORIG_IFS=${IFS}; \
+    IFS=','; \
+    for plugin in $PLUGINS; do \
       echo "plugin name is $plugin"; \
       grafana cli plugins install $plugin; \
-    done
+    done \
+    IFS=${ORIG_IFS};
