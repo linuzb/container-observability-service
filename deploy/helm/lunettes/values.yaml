@@ -29,7 +29,7 @@ auditApierver:
 lunettes:
   image:
     repository: lunettes/lunettes
-    tag: latest
+    tag: version
   nodeport: 30880
   logsPath: /logs
   logsHostPath: /home/var/logs/lunettes
@@ -63,7 +63,7 @@ grafanadi:
 grafana:
   image:
     repository: lunettes/grafana
-    tag: latest
+    tag: version
   serviceType: NodePort
   nodePort: 30180
   resources:
