@@ -1,15 +1,14 @@
-ARG GOARCH=amd64
-FROM golang:1.20.3 as builder
+# ARG GOARCH=amd64
+# FROM golang:1.20.3 as builder
 
-# Copy in the go src
-WORKDIR /src
-COPY . .
+# # Copy in the go src
+# WORKDIR /src
+# COPY . .
 
-RUN ls
-# Build
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o aggregator ./cmd/aggregator
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o auditinstaller ./cmd/audit_init
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o grafanadi ./cmd/grafanadi
+# # Build
+# RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o aggregator ./cmd/aggregator
+# RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o auditinstaller ./cmd/audit_init
+# RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -v -a -o grafanadi ./cmd/grafanadi
 
 # Copy the aggregator binary into a thin image
 FROM ubuntu:devel
@@ -29,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-COPY --from=builder /src/aggregator .
-COPY --from=builder /src/statics ./statics
-COPY --from=builder /src/auditinstaller .
-COPY --from=builder /src/grafanadi .
+# COPY --from=builder /src/aggregator .
+# COPY --from=builder /src/statics ./statics
+# COPY --from=builder /src/auditinstaller .
+# COPY --from=builder /src/grafanadi .

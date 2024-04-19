@@ -64,8 +64,8 @@ jobs:
             GOARCH=$(go env GOARCH)
           # Generate two Docker tags: ${APP_VERSION} 和 latest
           tags: |
-            ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:latest
-            ${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:${{ env.APP_VERSION }}
+            ${{ env.DOCKERHUB_REGISTRY }}/levizebulon/${{ env.LUNETTES_IMAGE_NAME }}:latest
+            ${{ env.DOCKERHUB_REGISTRY }}/levizebulon/${{ env.LUNETTES_IMAGE_NAME }}:${{ env.APP_VERSION }}
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:latest
             ${{ env.ACR_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}:${{ env.APP_VERSION }}
       - name: Build and push grafana
