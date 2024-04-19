@@ -12,7 +12,7 @@ env:
   LUNETTES_IMAGE_NAME: lunettes
   GRAFANA_IMAGE_NAME: grafana
   # Plugins to be installed.
-  GRAFANA_PLUGINS: yesoreyeram-infinity-datasource,marcusolsson-json-datasource,marcusolsson-dynamictext-panel,volkovlabs-form-panel 3.1.0
+  GRAFANA_PLUGINS: yesoreyeram-infinity-datasource,marcusolsson-json-datasource,marcusolsson-dynamictext-panel,volkovlabs-form-panel 3.2.0
 
 
 jobs:
