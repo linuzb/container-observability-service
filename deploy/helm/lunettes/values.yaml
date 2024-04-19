@@ -77,7 +77,7 @@ grafana:
 # kibana
 kibana:
   image:
-    repository: kibana/kibana
+    repository: library/kibana
     tag: 7.17.13
   nodePort: 30610
   resources:
@@ -104,11 +104,11 @@ filebeat:
 # elasticsearch
 elasticsearch:
   image:
-    repository: elasticsearch/elasticsearch
+    repository: library/elasticsearch
     tag: 7.17.13
   init:
     image:
-      repository: busybox/busybox
+      repository: library/busybox
       tag: stable
   elastic1NodePort: 30920
   elastic2NodePort: 30930
