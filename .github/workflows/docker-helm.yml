@@ -6,7 +6,7 @@ on:
     tags: "*"
 
 env:
-  DOCKERHUB_REGISTRY: registry-1.docker.io
+  DOCKERHUB_REGISTRY: docker.io
   ACR_REGISTRY: registry.cn-hangzhou.aliyuncs.com
   REGISTRY_NAMESPACE: linuzb
   LUNETTES_IMAGE_NAME: lunettes
