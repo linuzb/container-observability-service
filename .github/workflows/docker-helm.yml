@@ -8,7 +8,7 @@ on:
 env:
   DOCKERHUB_REGISTRY: registry-1.docker.io
   ACR_REGISTRY: registry.cn-hangzhou.aliyuncs.com
-  REGISTRY_NAMESPACE: lunettes
+  REGISTRY_NAMESPACE: linuzb
   LUNETTES_IMAGE_NAME: lunettes
   GRAFANA_IMAGE_NAME: grafana
   # Plugins to be installed.
