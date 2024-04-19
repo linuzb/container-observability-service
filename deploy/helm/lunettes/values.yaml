@@ -77,7 +77,7 @@ grafana:
 # kibana
 kibana:
   image:
-    repository: library/kibana
+    repository: lunettes/kibana
     tag: 7.17.13
   nodePort: 30610
   resources:
@@ -91,7 +91,7 @@ kibana:
 # filebeat
 filebeat:
   image:
-    repository: elastic/filebeat
+    repository: lunettes/filebeat
     tag: 7.17.13
   resources:
     limits:
@@ -104,11 +104,11 @@ filebeat:
 # elasticsearch
 elasticsearch:
   image:
-    repository: library/elasticsearch
+    repository: lunettes/elasticsearch
     tag: 7.17.13
   init:
     image:
-      repository: library/busybox
+      repository: lunettes/busybox
       tag: stable
   elastic1NodePort: 30920
   elastic2NodePort: 30930
@@ -126,7 +126,7 @@ elasticsearch:
 # prometheus
 prometheus:
   image:
-    repository: prom/prometheus
+    repository: lunettes/prometheus
     tag: latest
   nodePort: 30190
   resources:
@@ -140,7 +140,7 @@ prometheus:
 # jaejer
 jaejer:
   image:
-    repository: jaegertracing/all-in-one
+    repository: lunettes/all-in-one
     tag: 1.45
   serviceType: NodePort
   nodePort: 30686
