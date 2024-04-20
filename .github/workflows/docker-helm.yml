@@ -42,7 +42,6 @@ jobs:
           # GitHub Repo => Settings => Secrets add Docker Hub login key information
           # DOCKERHUB_USERNAME is the Docker Hub username.
           # DOCKERHUB_TOKEN: docker hub => Account Setting => Security => New Access Token.
-          registry: ${{ env.DOCKERHUB_REGISTRY }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       # Use the git command to retrieve the current tag information and store it in the environment variable APP_VERSION.
