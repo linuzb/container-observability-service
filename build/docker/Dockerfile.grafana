@@ -22,7 +22,9 @@ RUN set -e; \
     ORIG_IFS=${IFS}; \
     IFS=','; \
     for plugin in $PLUGINS; do \
-      echo "plugin name is $plugin"; \
-      grafana cli plugins install $plugin; \
+      plugin_name=$(echo $plugin | cut -d ':' -f1); \
+      plugin_version=$(echo $plugin | cut -d ':' -f2); \
+      echo "Installing plugin $plugin_name version $plugin_version"; \
+      grafana-cli plugins install $plugin_name $plugin_version; \
     done; \
     IFS=${ORIG_IFS};
