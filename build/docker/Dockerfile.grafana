@@ -9,7 +9,7 @@ WORKDIR /app/yaml_panel
 RUN npm install \
     && npm run build
 # Use the official Grafana image as the base image.
-FROM grafana/grafana:latest
+FROM grafana/grafana:10.4.2-ubuntu
 
 COPY --from=node /app/yaml_panel/dist /var/lib/grafana/plugins/antgroup-yaml-panel
 
