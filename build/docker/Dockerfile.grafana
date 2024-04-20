@@ -13,9 +13,6 @@ FROM grafana/grafana:10.4.2-ubuntu
 
 COPY --from=node /app/yaml_panel/dist /var/lib/grafana/plugins/antgroup-yaml-panel
 
-# Define the list of plugins to install, separated by spaces.
-ARG PLUGINS="" 
-
 # Install each plugin.
 RUN set -e; \
     ORIG_IFS=${IFS}; \
@@ -24,5 +21,4 @@ RUN set -e; \
       echo "plugin name is $plugin"; \
       grafana cli plugins install $plugin; \
     done; \
-    IFS=${ORIG_IFS}; \
-    grafana cli plugins install volkovlabs-form-panel 3.1.0
+    IFS=${ORIG_IFS};
