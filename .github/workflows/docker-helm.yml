@@ -98,4 +98,4 @@ jobs:
         # OCI artifacts on Docker Hub 
         # see: https://docs.docker.com/docker-hub/oci-artifacts/
         run: |
-          helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://${{ env.DOCKERHUB_REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.LUNETTES_IMAGE_NAME }}
+          helm push _out/lunettes-chart-${{ env.APP_VERSION }}.tgz oci://${{ env.DOCKERHUB_REGISTRY }}/levizebulon/${{ env.LUNETTES_IMAGE_NAME }}
