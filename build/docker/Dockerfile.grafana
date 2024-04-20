@@ -8,10 +8,14 @@ WORKDIR /app/yaml_panel
 # 安装依赖并编译
 RUN npm install \
     && npm run build
+
 # Use the official Grafana image as the base image.
 FROM grafana/grafana:10.4.2-ubuntu
 
 COPY --from=node /app/yaml_panel/dist /var/lib/grafana/plugins/antgroup-yaml-panel
+
+# Define the list of plugins to install, separated by spaces.
+ARG PLUGINS="" 
 
 # Install each plugin.
 RUN set -e; \
