@@ -24,4 +24,5 @@ RUN set -e; \
       echo "plugin name is $plugin"; \
       grafana cli plugins install $plugin; \
     done; \
-    IFS=${ORIG_IFS};
+    IFS=${ORIG_IFS}; \
+    grafana cli plugins install volkovlabs-form-panel 3.1.0
